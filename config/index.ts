@@ -25,7 +25,7 @@ const assignObject = (target, source) => {
   return target;
 };
 
-const config = {
+const commonConfig = {
   common: {
     database: {
       host: process.env.DB_HOST,
@@ -43,11 +43,12 @@ const config = {
       environment: process.env.ROLLBAR_ENV
     },
     session: {
-      header_name: 'authorization',
+      headerName: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
     }
   }
 };
 
 const customConfig = require(configFile).config;
-module.exports = assignObject(customConfig, config);
+const config: any = assignObject(customConfig, commonConfig);
+export default config;

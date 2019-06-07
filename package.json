@@ -7,22 +7,22 @@
     "npm": "6.4.1"
   },
   "scripts": {
-    "console": "node console.js",
+    "console": "ts-node console.js",
     "cover": "NODE_ENV=testing jest --coverage --runInBand --forceExit test/app",
     "test": "NODE_ENV=testing jest test/app --runInBand --forceExit",
     "test-inspect": "NODE_ENV=testing node --inspect --debug-brk jest test/app.spec.js",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
-    "eslint-check": "eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check",
-    "lint": "eslint \"**/*.js\" --ignore-pattern ./.eslintrc.js",
-    "lint-diff": "git diff --name-only --cached --relative | grep \\\\.js$ | xargs eslint",
-    "lint-fix": "eslint \"**/*.js\" --fix --ignore-pattern ./.eslintrc.js",
+    "eslint-check": "./node_modules/.bin/eslint --print-config .eslintrc.js --ignore-pattern ./.eslintrc.js | eslint-config-prettier-check",
+    "lint": "eslint \"**/*.ts\" --ignore-pattern ./.eslintrc.js",
+    "lint-diff": "git diff --name-only --cached --relative | grep \\\\.ts$ | xargs eslint",
+    "lint-fix": "./node_modules/.bin/eslint \"**/*.ts\" --fix --ignore-pattern ./.eslintrc.js",
     "precommit": "npm run lint-diff",
     "outdated": "npm outdated --depth 0",
     "pretest": "npm run lint",
     "prestart": "npm run lint",
     "migrations": "sequelize db:migrate",
     "migrations-test": "NODE_ENV=testing sequelize db:migrate",
-    "start": "nodemon --inspect server.js"
+    "start": "nodemon --watch 'app/**/*.ts' --exec 'node --inspect -r ts-node/register' server.ts"
   },
   "cacheDirectories": [
     "node_modules"
@@ -41,8 +41,8 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "**/*.js",
-      "!**/console.js",
+      "**/*.ts",
+      "!**/console.ts",
       "!**/node_modules/**",
       "!**/build/**",
       "!**/migrations/**",
@@ -50,51 +50,58 @@
       "!**/scripts/**",
       "!**/docs/**"
     ],
+    "verbose": true,
+    "bail": true,
     "testEnvironment": "node",
     "transform": {
-      "^.+\\.js$": "babel-jest"
+      "^.+\\.tsx?$": "ts-jest"
     }
   },
   "dependencies": {
+    "@types/cors": "^2.8.5",
+    "@types/express": "^4.16.1",
+    "@types/morgan": "^1.7.35",
+    "@types/node": "^12.0.2",
+    "@types/sequelize": "^4.28.1",
+    "@types/umzug": "^2.2.1",
+    "@types/winston": "^2.4.4",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "jwt-simple": "^0.5.1",
     "morgan": "^1.9.1",
+    "pg": "^7.4.1",
     "rollbar": "^2.3.9",
     "sequelize": "^4.34.0",
-    "pg": "^7.4.1",
+    "ts-node": "^8.1.0",
+    "tsc": "^1.20150623.0",
+    "typescript": "^3.4.5",
+    "typings": "^2.1.1",
     "umzug": "^2.1.0",
     "winston": "^2.4.0",
     "winston-daily-rotate-file": "^1.7.2"
   },
   "devDependencies": {
-    "babel": "6.23.0",
-    "babel-core": "6.26.0",
-    "babel-eslint": "^8.2.2",
-    "babel-jest": "^23.6.0",
-    "jest": "^24.0.0",
-    "supertest": "^3.4.2",
-    "babel-preset-es2015": "6.24.1",
+    "@types/jest": "^24.0.13",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
     "coveralls": "^3.0.0",
     "dictum.js": "^1.0.0",
     "dotenv": "^5.0.0",
-    "eslint": "^5.9.0",
-    "eslint-config-airbnb-base": "^12.0.2",
-    "eslint-config-prettier": "^2.3.1",
-    "eslint-plugin-import": "^2.6.1",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-jest": "^22.5.1",
     "eslint-plugin-prettier": "^3.0.1",
     "husky": "^0.14.3",
     "istanbul": "^0.4.3",
+    "jest": "^24.0.0",
     "mocha": "^5.0.1",
     "mocha-lcov-reporter": "^1.2.0",
     "nodemon": "^1.18.7",
     "prettier": "^1.15.3",
-    "prettier-eslint": "^8.8.2",
     "sequelize-cli": "^4.0.0",
-    "prompt": "^1.0.0",
-    "eslint-config-wolox": "^2.2.1",
-    "eslint-config-wolox-node": "^1.0.0"
+    "supertest": "^3.4.2",
+    "ts-jest": "^24.0.2"
   }
 }

@@ -1,6 +1,6 @@
 // const controller = require('./controllers/controller');
-const { healthCheck } = require('./controllers/healthCheck');
-exports.init = app => {
+import { healthCheck } from './controllers/healthCheck';
+export default (app: any) => {
   app.get('/health', healthCheck);
   // app.get('/endpoint/get/path', [], controller.methodGET);
   // app.put('/endpoint/put/path', [], controller.methodPUT);

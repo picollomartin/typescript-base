@@ -1,15 +1,14 @@
-const repl = require('repl'),
-  fs = require('fs'),
-  models = require('./app/models'),
-  pjson = require('./package.json');
+import * as repl from 'ts-node';
+import fs from 'fs';
+import models from './app/models';
 
-const convertFunctionToAsync = f => async (...args) => {
+const convertFunctionToAsync: any = f => async (...args) => {
   const result = await f(...args);
   console.log(JSON.stringify(result, null, 2)); // eslint-disable-line no-console
   return result;
 };
 
-const convertObjectFunctionsToAsync = serviceMethods => {
+const convertObjectFunctionsToAsync: any = serviceMethods => {
   const asyncServiceMethods = {};
   Object.keys(serviceMethods).forEach(key => {
     if (typeof serviceMethods[key] === 'function') {
@@ -22,14 +21,15 @@ const convertObjectFunctionsToAsync = serviceMethods => {
 };
 
 Promise.resolve().then(() => {
-  const replServer = repl.start({
-    prompt: `${pjson.name}> `
+  const replServer: any = repl.register({
+    pretty: true,
+    typeCheck: true
   });
   replServer.context.models = models;
-  const servicesPath = './app/services/';
+  const servicesPath: any = './app/services/';
   fs.readdir(servicesPath, (err, files) => {
     files.forEach(file => {
-      const serviceMethods = require(`${servicesPath}${file}`);
+      const serviceMethods = import(`${servicesPath}${file}`);
       const asyncServiceMethods = convertObjectFunctionsToAsync(serviceMethods);
       replServer.context[`${file.split('.')[0]}Service`] = asyncServiceMethods;
     });

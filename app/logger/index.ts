@@ -1,7 +1,7 @@
-const winston = require('winston'),
-  fs = require('fs'),
-  config = require('../../config'),
-  logDir = `${__dirname}/logs`;
+import * as fs from 'fs';
+import winston, { Logger } from 'winston';
+import config from '../../config';
+const logDir = `${__dirname}/logs`;
 winston.transports.DailyRotateFile = require('winston-daily-rotate-file');
 
 if (!fs.existsSync(logDir)) {
@@ -10,7 +10,7 @@ if (!fs.existsSync(logDir)) {
 }
 
 const tsFormat = () => new Date().toLocaleTimeString();
-const logger = new winston.Logger({
+const logger = new Logger({
   transports: [
     new winston.transports.File({
       name: 'complete',
@@ -52,4 +52,4 @@ const logger = new winston.Logger({
   ]
 });
 
-module.exports = logger;
+export default logger;

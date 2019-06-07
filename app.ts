@@ -1,26 +1,27 @@
-const express = require('express'),
-  bodyParser = require('body-parser'),
-  morgan = require('morgan'),
-  path = require('path'),
-  cors = require('cors'),
-  config = require('./config'),
-  routes = require('./app/routes'),
-  errors = require('./app/middlewares/errors'),
-  DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10,
-  DEFAULT_PARAMETER_LIMIT = 10000;
+import express from 'express';
+import bodyParser from 'body-parser';
+import morgan from 'morgan';
+import path from 'path';
+import cors from 'cors';
+import config from './config';
+import routes from './app/routes';
+import errors from './app/middlewares/errors';
 
-const bodyParserJsonConfig = () => ({
+const DEFAULT_BODY_SIZE_LIMIT = 1024 * 1024 * 10;
+const DEFAULT_PARAMETER_LIMIT = 10000;
+
+const bodyParserJsonConfig: any = () => ({
   parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
   limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
 });
 
-const bodyParserUrlencodedConfig = () => ({
+const bodyParserUrlencodedConfig: any = () => ({
   extended: true,
   parameterLimit: config.common.api.parameterLimit || DEFAULT_PARAMETER_LIMIT,
   limit: config.common.api.bodySizeLimit || DEFAULT_BODY_SIZE_LIMIT
 });
 
-const app = express();
+const app: any = express();
 
 app.use(cors());
 
@@ -39,8 +40,8 @@ if (!config.isTesting) {
   );
 }
 
-routes.init(app);
+routes(app);
 
-app.use(errors.handle);
+app.use(errors);
 
-module.exports = app;
+export default app;

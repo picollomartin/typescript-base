@@ -1,14 +1,14 @@
-const errors = require('../errors'),
-  logger = require('../logger');
+import * as errors from '../errors';
+import logger from '../logger';
 
 const DEFAULT_STATUS_CODE = 500;
 
-const statusCodes = {
+const statusCodes: any = {
   [errors.DATABASE_ERROR]: 503,
   [errors.DEFAULT_ERROR]: 500
 };
 
-exports.handle = (error, req, res, next) => {
+export default (error: any, req: any, res: any, next: any) => {
   if (error.internalCode) {
     res.status(statusCodes[error.internalCode] || DEFAULT_STATUS_CODE);
   } else {
@@ -17,5 +17,5 @@ exports.handle = (error, req, res, next) => {
     res.status(DEFAULT_STATUS_CODE);
   }
   logger.error(error);
-  return res.send({ message: error.message, internal_code: error.internalCode });
+  return res.send(error);
 };

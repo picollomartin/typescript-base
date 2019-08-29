@@ -1,9 +1,14 @@
 import Umzug from 'umzug';
-import config from './../config/';
+import config from './../config';
 import models from '../app/models';
 import logger from '../app/logger';
 
 export const check = () => {
+  let path: string = __dirname;
+  if(config.isDevelopment){
+    path = path.replace('/migrations', '/dist/migrations');
+  }
+  path = path + '/migrations';
   const umzug = new Umzug({
     logging: logger.info,
     storage: 'sequelize',
@@ -16,7 +21,7 @@ export const check = () => {
           throw new Error('Migration tried to use old style "done" callback.upgrade');
         }
       ],
-      path: `${__dirname}/migrations`,
+      path,
       pattern: /\.js$/
     }
   });

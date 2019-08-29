@@ -8,7 +8,6 @@
   },
   "scripts": {
     "build": "tsc",
-    "prod": "tsc && node ./dist/server.js",
     "console": "node console.js",
     "cover": "NODE_ENV=testing jest --coverage --runInBand --forceExit test/app",
     "test": "NODE_ENV=testing jest dist/test/app --runInBand --forceExit",
@@ -19,6 +18,7 @@
     "lint-diff": "git diff --name-only --cached --relative | grep \\\\.ts$ | xargs eslint",
     "lint-fix": "eslint \"**/*.ts\" --fix --ignore-pattern ./.eslintrc.js",
     "precommit": "npm run lint-diff",
+    "postinstall": "npm run build",
     "outdated": "npm outdated --depth 0",
     "pretest": "npm run lint",
     "prestart": "npm run lint",
@@ -66,6 +66,7 @@
     "jwt-simple": "^0.5.1",
     "morgan": "^1.9.1",
     "pg": "^7.4.1",
+    "request": "^2.88.0",
     "request-promise": "^4.2.4",
     "rollbar": "^2.3.9",
     "sequelize": "^5.15.0",

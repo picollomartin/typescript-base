@@ -3,7 +3,7 @@ import config from './../config';
 import models from '../app/models';
 import logger from '../app/logger';
 
-export const check = () => {
+exports.check = () => {
   const umzug = new Umzug({
     logging: logger.info,
     storage: 'sequelize',

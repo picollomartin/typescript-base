@@ -70,7 +70,6 @@
     "request-promise": "^4.2.4",
     "rollbar": "^2.3.9",
     "sequelize": "^5.15.0",
-    "ts-node-dev": "^1.0.0-pre.41",
     "umzug": "^2.1.0",
     "winston": "^2.4.0",
     "winston-daily-rotate-file": "^1.7.2"
@@ -115,7 +114,7 @@
     "prompt": "^1.0.0",
     "sequelize-cli": "^4.0.0",
     "supertest": "^3.4.2",
-    "ts-node": "^8.3.0",
+    "ts-node-dev": "1.0.0-pre.40",
     "typescript": "^3.5.2"
   }
 }

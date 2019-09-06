@@ -1,26 +1,28 @@
 import { Request, Response, NextFunction } from 'express';
-import * as errors from '../errors';
 import models from '../models';
+import { statusCodes } from './commons';
+import { NotFoundError } from '../errors';
+import { UserModel } from '../../types/models';
+import Bluebird = require('bluebird');
 
 const User = models.users;
 
-export const getUsers = (_: any, res: Response, next: NextFunction) =>
+export const getUsers = (_: Request, res: Response, next: NextFunction): Promise<UserModel[]> =>
   User.findAll()
-    .then((users: any) => res.send(users))
+    .then((users: UserModel[]) => res.send(users))
     .catch(next);
 
-export const createUser = (req: Request, res: Response, next: NextFunction) =>
+export const createUser = (req: Request, res: Response, next: NextFunction): Bluebird<void> =>
   User.create({ username: req.body.username })
-    .then(() => res.status(201).end())
+    .then(() => res.status(statusCodes.created).end())
     .catch(next);
 
-export const getUserById = (req: Request, res: Response, next: NextFunction) =>
+export const getUserById = (req: Request, res: Response, next: NextFunction): Promise<UserModel> =>
   User.findOne({ where: { id: req.params.id } })
-    .then((user: any) => {
+    .then((user: UserModel) => {
       if (!user) {
-        return next(errors.notFound('User not found'));
+        throw new NotFoundError('User not found');
       }
-
       return res.send(user);
     })
     .catch(next);

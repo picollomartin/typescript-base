@@ -12,7 +12,7 @@ module.exports = {
     "ecmaFeatures": {
       "jsx": false,
     },
-    "project": "tsconfig.json",
+    "project": "./tsconfig.json",
   },
   "plugins": [
     "@typescript-eslint/tslint"

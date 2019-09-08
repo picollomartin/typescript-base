@@ -13,6 +13,8 @@ export type UserModel = typeof Model & {
   new (values?: object, options?: BuildOptions): IUserModel;
 };
 
-export interface IUserModel extends SequelizeModel {
+
+export interface IUserModel extends Model {
   id: number;
+  username: string;
 }

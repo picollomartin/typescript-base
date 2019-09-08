@@ -28,4 +28,4 @@ const dbConfiguration = {
   }
 };
 
-export default dbConfiguration;
+export { dbConfiguration };

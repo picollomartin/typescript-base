@@ -16,7 +16,6 @@ Promise.resolve()
       environment: config.common.rollbar.environment || config.environment
     });
     app.use(rollbar.errorHandler());
-    logger.info('**************************************************');
 
     app.listen(port);
 

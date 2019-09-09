@@ -1,7 +1,7 @@
 type ENV_VAR = string | undefined;
 
 export interface IConfig {
-  common?: {
+  common: {
     database: {
       host: ENV_VAR,
       port: ENV_VAR,
@@ -23,7 +23,7 @@ export interface IConfig {
       secret: ENV_VAR
     }
   },
-  todos?: {
+  todos: {
     baseUrl: ENV_VAR
   }
 }

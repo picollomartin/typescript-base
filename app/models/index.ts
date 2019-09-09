@@ -4,7 +4,7 @@ import { Sequelize } from 'sequelize';
 
 import { IModels } from '../../types/models';
 import config from '../../config';
-import { dbConfiguration } from './../../config/db';
+import dbConfiguration from '../../config/db';
 
 const dbConfig = dbConfiguration[config.environment];
 const models = {};

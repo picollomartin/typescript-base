@@ -1,7 +1,5 @@
-import { IConfig } from '../types/config';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const dbConfiguration = require('./db');
-
+import { IConfig} from "../types/config";
+const { dbConfiguration } = require('./db');
 const ENVIRONMENT: string = process.env.NODE_ENV || 'development';
 if (ENVIRONMENT !== 'production') {
   require('dotenv').config();

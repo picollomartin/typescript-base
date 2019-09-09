@@ -27,11 +27,3 @@ export const getUserById = (req: Request, res: Response, next: NextFunction): Pr
       .on(Error).throw(x => new InternalServerError(x.message))
       .default(new InternalServerError('Oops ha habido un error')))
     .catch(next);
-
-/*
-.catch((e: unknown) =>
-      match(e)
-        .on(UserNotFoundError).throw(x => new NotFoundError(`${req.params.id}  ${x.banana.toISOString()}`))
-    );
-
- */

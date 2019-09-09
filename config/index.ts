@@ -15,7 +15,7 @@ const isObject = (variable: unknown): boolean => variable instanceof Object;
  * Deep copy of source object into tarjet object.
  * It does not overwrite properties.
  */
-const assignObject = <T> (target: T, source: IConfig): T & IConfig => {
+const assignObject = <T> (target: T, source: IConfig): T & IConfig | T => {
   if (target && isObject(target) && source && isObject(source)) {
     Object.keys(source).forEach(key => {
       if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {

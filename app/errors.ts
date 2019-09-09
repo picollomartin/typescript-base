@@ -1,29 +1,19 @@
 
-export enum ErrorCode {
-  NOT_FOUND = 'NOT_FOUND',
-  BAD_FORMAT = 'BAD_FORMAT',
-  DATABASE_ERROR = 'DATABASE_ERROR',
-  DEFAULT_ERROR = 'DEFAULT_ERROR'
-}
+type InternalError = {
+  message: string,
+  internalCode: string
+};
 
+const setInternalError = (message: string, internalCode: string): InternalError => ({
+  message,
+  internalCode
+});
 
-export abstract class InternalError extends Error {
-  public readonly code: ErrorCode;
+export const DATABASE_ERROR = 'database_error';
+export const databaseError = (message: string): InternalError => setInternalError(message, DATABASE_ERROR);
 
-  protected constructor(msg: string, code: ErrorCode) {
-    super(msg);
-    this.code = code;
-  }
-}
+export const DEFAULT_ERROR = 'default_error';
+export const defaultError = (message: string): InternalError => setInternalError(message, DEFAULT_ERROR);
 
-export class DatabaseError extends InternalError {
-  public constructor(msg: string) {
-    super(msg, ErrorCode.DATABASE_ERROR);
-  }
-}
-
-export class NotFoundError extends InternalError {
-  public constructor(msg: string) {
-    super(msg, ErrorCode.NOT_FOUND);
-  }
-}
+export const NOT_FOUND = 'not_found';
+export const notFound = (message: string): InternalError => setInternalError(message, NOT_FOUND);

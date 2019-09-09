@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import models from '../models';
 import { statusCodes } from './commons';
-import { NotFoundError } from '../errors';
+import { notFound } from '../errors';
 import { IUserModel } from '../../types/models';
 
 const User = models.users;
@@ -20,7 +20,7 @@ export const getUserById = (req: Request, res: Response, next: NextFunction): Pr
   User.findOne({ where: { id: req.params.id } })
     .then((user: IUserModel) => {
       if (!user) {
-        throw new NotFoundError('User not found');
+        throw notFound('User not found');
       }
       return res.send(user);
     })

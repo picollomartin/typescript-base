@@ -4,7 +4,8 @@ import * as migrationsManager from './migrations';
 import config from './config';
 import logger from './app/logger';
 
-const port = config.common.api.port || 8080;
+const DEFAULT_PORT = 8080;
+const port = config.common.api.port || DEFAULT_PORT;
 
 Promise.resolve()
   .then(() => migrationsManager.check())
@@ -15,6 +16,7 @@ Promise.resolve()
       environment: config.common.rollbar.environment || config.environment
     });
     app.use(rollbar.errorHandler());
+    logger.info('**************************************************');
 
     app.listen(port);
 

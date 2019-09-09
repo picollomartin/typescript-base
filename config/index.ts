@@ -1,4 +1,4 @@
-import { Config } from './../types/config';
+import { Config } from '../types/config';
 
 const ENVIRONMENT: string = process.env.NODE_ENV || 'development';
 
@@ -8,13 +8,13 @@ if (ENVIRONMENT !== 'production') {
 
 const configFile = `./${ENVIRONMENT}`;
 
-const isObject = (variable: any) => variable instanceof Object;
+const isObject = (variable: unknown): boolean => variable instanceof Object;
 
 /*
  * Deep copy of source object into tarjet object.
  * It does not overwrite properties.
  */
-const assignObject = (target: object, source: Config) => {
+const assignObject = <T> (target: T, source: Config): T & Config => {
   if (target && isObject(target) && source && isObject(source)) {
     Object.keys(source).forEach(key => {
       if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {
@@ -45,6 +45,7 @@ const config: Config = {
       environment: process.env.ROLLBAR_ENV
     },
     session: {
+      // eslint-disable-next-line @typescript-eslint/camelcase
       header_name: 'authorization',
       secret: process.env.NODE_API_SESSION_SECRET
     }

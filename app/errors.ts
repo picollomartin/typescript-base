@@ -22,7 +22,7 @@ export enum ErrorCode {
 }
 
 
-export abstract class InternalError extends Error {
+export abstract class HTTPError extends Error {
   public readonly code: ErrorCode;
 
   protected constructor(msg: string, code: ErrorCode) {
@@ -31,14 +31,20 @@ export abstract class InternalError extends Error {
   }
 }
 
-export class DatabaseError extends InternalError {
+export class DatabaseError extends HTTPError {
   public constructor(msg: string) {
     super(msg, ErrorCode.DATABASE_ERROR);
   }
 }
 
-export class NotFoundError extends InternalError {
+export class InternalServerError extends HTTPError {
   public constructor(msg: string) {
-    super(msg, ErrorCode.NOT_FOUND);
+    super(msg, ErrorCode.DEFAULT_ERROR);
+  }
+}
+
+export class NotFoundError extends HTTPError {
+  public constructor(resource: string) {
+    super(`${resource} not found`, ErrorCode.NOT_FOUND);
   }
 }

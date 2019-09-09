@@ -1,7 +1,6 @@
-
 type InternalError = {
-  message: string,
-  internalCode: string
+  message: string;
+  internalCode: string;
 };
 
 const setInternalError = (message: string, internalCode: string): InternalError => ({

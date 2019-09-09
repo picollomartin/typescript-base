@@ -3,7 +3,7 @@ import { UserModel } from '../../types/models';
 
 module.exports = (sequelize: Sequelize, DataType: typeof DataTypes): UserModel => {
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-  const User = <UserModel> sequelize.define(
+  const User = <UserModel>sequelize.define(
     'users',
     {
       username: {

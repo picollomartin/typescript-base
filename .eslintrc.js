@@ -38,7 +38,7 @@ module.exports = {
     "@typescript-eslint/camelcase": ["error", { "properties": "always" }],
     "@typescript-eslint/class-name-casing": ["error", { "allowUnderscorePrefix": true }],
     "@typescript-eslint/consistent-type-assertions": "warning",
-    // "@typescript-eslint/consistent-type-definitions": ["error", "type"], TODO: revisar si se puede definir sequelize sin Interface
+    // "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     "@typescript-eslint/explicit-function-return-type": ["error"],
     "@typescript-eslint/explicit-member-accessibility": ["error"],
     "func-call-spacing": "off",

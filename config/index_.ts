@@ -1,7 +1,5 @@
-import { IConfig } from '../types/config';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const dbConfiguration = require('./db');
-
+import { IConfig} from "../types/config";
+const { dbConfiguration } = require('./db');
 const ENVIRONMENT: string = process.env.NODE_ENV || 'development';
 if (ENVIRONMENT !== 'production') {
   require('dotenv').config();
@@ -15,7 +13,7 @@ const isObject = (variable: unknown): boolean => variable instanceof Object;
  * Deep copy of source object into tarjet object.
  * It does not overwrite properties.
  */
-const assignObject = <T> (target: T, source: IConfig): T & IConfig => {
+const assignObject = (target: object, source: IConfig): IConfig => {
   if (target && isObject(target) && source && isObject(source)) {
     Object.keys(source).forEach(key => {
       if (!Object.prototype.hasOwnProperty.call(target, key) || target[key] === undefined) {

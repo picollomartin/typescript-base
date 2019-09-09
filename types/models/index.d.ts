@@ -14,7 +14,7 @@ export type UserModel = typeof Model & {
 };
 
 
-export interface IUserModel extends Model {
+export interface IUserModel extends ISequelizeModel {
   id: number;
   username: string;
 }

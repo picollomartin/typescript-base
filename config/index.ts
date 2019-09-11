@@ -28,9 +28,10 @@ const assignObject = <T> (target: T, source: IConfig): T & IConfig | T => {
   return target;
 };
 
+
 const config: IConfig = {
   common: {
-    database: dbConfiguration[ENVIRONMENT],
+    database: dbConfiguration,
     api: {
       bodySizeLimit: process.env.API_BODY_SIZE_LIMIT,
       parameterLimit: process.env.API_PARAMETER_LIMIT,

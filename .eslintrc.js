@@ -27,6 +27,7 @@ module.exports = {
     __DEV__: true
   },
   rules: {
+
     "@typescript-eslint/array-type": "array",
     "@typescript-eslint/class-name-casing": ["error", { "allowUnderscorePrefix": true }],
     "@typescript-eslint/consistent-type-assertions": "error",
@@ -62,7 +63,7 @@ module.exports = {
     "require-await": "off",
     "@typescript-eslint/require-await": "error",
     "@typescript-eslint/restrict-plus-operands": "error",
-    "@typescript-eslint/type-annotation-spacing": ["error", {before: false, after: true}],
+    //"@typescript-eslint/type-annotation-spacing": ["error", {before: false, after: true}],
     "@typescript-eslint/unbound-method": [ "error"],
     "@typescript-eslint/no-explicit-any": ["error", { "ignoreRestArgs": true }]
   },

@@ -1,10 +1,10 @@
-import fs from 'fs';
+/*import fs from 'fs';
 import path from 'path';
 import { Sequelize } from 'sequelize';
 
 import { IModels } from '../../types/models';
 import config from '../../config';
-import dbConfiguration from '../../config/db';
+import { dbConfiguration } from '../../config/db';
 
 const dbConfig = dbConfiguration[config.environment];
 const models = {};
@@ -26,3 +26,4 @@ Object.keys(models).forEach(modelName => {
 });
 
 export default <IModels>{ sequelize, ...models };
+*/

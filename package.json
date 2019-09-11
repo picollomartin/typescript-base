@@ -21,7 +21,6 @@
     "postinstall": "npm run build",
     "outdated": "npm outdated --depth 0",
     "pretest": "npm run lint",
-    "prestart": "npm run lint",
     "migrations": "tsc && sequelize db:migrate",
     "migrations-test": "tsc && NODE_ENV=testing sequelize db:migrate",
     "start": "ts-node-dev --respawn --transpileOnly ./server.ts"
@@ -79,7 +78,10 @@
     "tslint": "^5.19.0",
     "umzug": "^2.1.0",
     "winston": "^2.4.0",
-    "winston-daily-rotate-file": "^1.7.2"
+    "winston-daily-rotate-file": "^1.7.2",
+    "typeorm": "0.2.18",
+    "reflect-metadata": "^0.1.10"
+
   },
   "devDependencies": {
     "@types/babel-core": "^6.25.6",

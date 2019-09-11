@@ -29,7 +29,7 @@ Then, set in `.env` some variables:
 
 ### Migrations
 
-To create a migration, run `./node_modules/.bin/sequelize migration:create --name="my-migration-name" --config ./migrations/config.js --migrations-path ./migrations/migrations`.
+To create a migration, run `/node_modules/.bin/typeorm migration:create -n MigrationName -d src/to/migration/folder`.
 
 To run them, execute `npm run migrations`.
 
@@ -62,7 +62,7 @@ Here is an example snippet:
 ```
 const logger = require('/app/logger');
 ...
-if (error) { 
+if (error) {
     logger.error('There is an error);
 } else {
     logger.info('There is no error);

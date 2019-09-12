@@ -3,7 +3,7 @@ if (ENVIRONMENT !== 'production') {
   require('dotenv').config();
 }
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const dbEnvConfig = require('./development');
+const dbEnvConfig = require(`./${ENVIRONMENT}.ts`);
 
 const dbConfiguration = {
   host: process.env.DB_HOST,

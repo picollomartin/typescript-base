@@ -35,6 +35,8 @@ module.exports = {
     "@typescript-eslint/explicit-member-accessibility": ["error"],
     "func-call-spacing": "off",
     "@typescript-eslint/func-call-spacing": ["error"],
+    "@typescript-eslint/interface-name-prefix": ["error", { "prefixWithI": "always" }],
+    "indent": "off",
     "no-empty-function": "off",
     "@typescript-eslint/no-empty-function": "error",
     "@typescript-eslint/no-empty-interface": ["error", { "allowSingleExtends": false }],
@@ -53,16 +55,17 @@ module.exports = {
     "@typescript-eslint/no-misused-new": "error",
     "@typescript-eslint/no-misused-promises": ["error"],
     '@typescript-eslint/no-this-alias': ['error',{ allowDestructuring: true }],
-    "no-useless-constructor": "error",
+    "no-useless-constructor": "off",
     "@typescript-eslint/no-useless-constructor": "error",
     "@typescript-eslint/prefer-includes": "error",
     "@typescript-eslint/prefer-readonly": ["error"],
     "@typescript-eslint/prefer-string-starts-ends-with": "error",
+    "require-await": "off",
+    "@typescript-eslint/require-await": "error",
     "@typescript-eslint/restrict-plus-operands": "error",
     //"@typescript-eslint/type-annotation-spacing": ["error", {before: false, after: true}],
     "@typescript-eslint/unbound-method": [ "error"],
-    "@typescript-eslint/no-explicit-any": ["error", { "ignoreRestArgs": true }],
-    "@typescript-eslint/camelcase": "off"
+    "@typescript-eslint/no-explicit-any": ["error", { "ignoreRestArgs": true }]
   },
   settings: {
     "import/resolver": {

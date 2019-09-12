@@ -7,7 +7,7 @@ const typeOrmConfig = {
   synchronize: true,
   logging: false,
   entities: ['./entity/**/*.ts'],
-  migrations: ['./dist/migration/*.js'],
+  migrations: ['./migration/migrations/*.ts'],
   subscribers: ['./subscriber/**/*.ts'],
   cli: {
     entitiesDir: './entity',

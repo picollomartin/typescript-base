@@ -29,7 +29,7 @@ Then, set in `.env` some variables:
 
 ### Migrations
 
-To create a migration, run `/node_modules/.bin/typeorm migration:create -n MigrationName -d src/to/migrations/folder`.
+To create a migration, run `/node_modules/.bin/typeorm migration:create -n MigrationName -d src/to/migration/folder`.
 
 To run them, execute `npm run migrations`.
 

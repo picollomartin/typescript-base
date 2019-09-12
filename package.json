@@ -21,7 +21,7 @@
     "postinstall": "npm run build",
     "outdated": "npm outdated --depth 0",
     "pretest": "npm run lint",
-    "migrations": "tsc && sequelize db:migrate",
+    "migrations": "tsc && typeorm migration:run",
     "migrations-test": "tsc && NODE_ENV=testing sequelize db:migrate",
     "start": "ts-node-dev --respawn --transpileOnly ./server.ts"
   },

@@ -18,10 +18,12 @@ Promise.resolve()
     });
     app.use(rollbar.errorHandler());
   })
-  .then(() => createConnection())
+  .then(() =>
+    createConnection()
+  )
   .then(() => {
     app.listen(port);
 
     logger.info(`Listening on port: ${port}`);
   })
-  .catch(logger.error);
+  .catch(e => logger.error(e));

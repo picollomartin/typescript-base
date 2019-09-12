@@ -81,7 +81,6 @@
     "winston-daily-rotate-file": "^1.7.2",
     "typeorm": "0.2.18",
     "reflect-metadata": "^0.1.10"
-
   },
   "devDependencies": {
     "@types/babel-core": "^6.25.6",

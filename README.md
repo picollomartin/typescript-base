@@ -30,7 +30,7 @@ Then, set in `.env` some variables:
 ### Migrations
 
 To create a migration from changes in models, run `ts-node node_modules/.bin/typeorm migration:generate -n MigrationName`
-Migrations should generate after each change you made to your models.
+Migrations should be generated after each change you made to your models.
 Migrations will run every time the project starts.
 
 To create a migration manually, run `ts-node node_modules/.bin/typeorm migration:create -n MigrationName -d migration/folder`.

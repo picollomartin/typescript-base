@@ -23,5 +23,13 @@
     },
     "include": [
         "./"
+    ],
+    "includes": [
+        "**/*.ts",
+        "**/*.js"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
     ]
 }

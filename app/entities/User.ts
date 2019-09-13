@@ -5,13 +5,13 @@ import {UserDTO} from "../../types/dto";
 @Entity({name: 'users'})
 export class User{
   @PrimaryGeneratedColumn()
-  id!: number;
+  id: number;
 
   @Column('varchar')
-  username!: string;
+  username: string;
 
   @Column({name: 'something_else', type: 'varchar'})
-  somethingElese!: string;
+  somethingElese: string;
 
   constructor(userdata: UserDTO) {
     this.username = userdata.username;

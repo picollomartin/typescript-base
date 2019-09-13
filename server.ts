@@ -18,9 +18,7 @@ Promise.resolve()
     });
     app.use(rollbar.errorHandler());
   })
-  .then(() =>
-    createConnection()
-  )
+  .then(() => createConnection())
   .then(() => {
     app.listen(port);
 

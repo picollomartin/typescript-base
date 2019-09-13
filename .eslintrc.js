@@ -27,6 +27,7 @@ module.exports = {
     __DEV__: true
   },
   rules: {
+
     "@typescript-eslint/array-type": "array",
     "@typescript-eslint/class-name-casing": ["error", { "allowUnderscorePrefix": true }],
     "@typescript-eslint/consistent-type-assertions": "error",
@@ -52,16 +53,17 @@ module.exports = {
     "@typescript-eslint/no-misused-new": "error",
     "@typescript-eslint/no-misused-promises": ["error"],
     '@typescript-eslint/no-this-alias': ['error',{ allowDestructuring: true }],
-    "no-useless-constructor": "error",
+    "no-useless-constructor": "off",
     "@typescript-eslint/no-useless-constructor": "error",
     "@typescript-eslint/prefer-includes": "error",
     "@typescript-eslint/prefer-readonly": ["error"],
     "@typescript-eslint/prefer-string-starts-ends-with": "error",
+    "require-await": "off",
+    "@typescript-eslint/require-await": "error",
     "@typescript-eslint/restrict-plus-operands": "error",
-    "@typescript-eslint/type-annotation-spacing": ["error", {before: false, after: true}],
+    //"@typescript-eslint/type-annotation-spacing": ["error", {before: false, after: true}],
     "@typescript-eslint/unbound-method": [ "error"],
-    "@typescript-eslint/no-explicit-any": ["error", { "ignoreRestArgs": true }],
-    "@typescript-eslint/camelcase": "off"
+    "@typescript-eslint/no-explicit-any": ["error", { "ignoreRestArgs": true }]
   },
   settings: {
     "import/resolver": {

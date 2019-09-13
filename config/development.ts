@@ -1,4 +1,4 @@
-exports.config = {
+export const config = {
   environment: 'development',
   common: {
     database: {

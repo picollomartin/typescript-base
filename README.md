@@ -29,9 +29,14 @@ Then, set in `.env` some variables:
 
 ### Migrations
 
-To create a migration, run `./node_modules/.bin/sequelize migration:create --name="my-migration-name" --config ./migrations/config.js --migrations-path ./migrations/migrations`.
+To create a migration from changes in models, run `ts-node node_modules/.bin/typeorm migration:generate -n MigrationName`
+Migrations should be generated after each change you made to your models.
+Migrations will run every time the project starts.
 
-To run them, execute `npm run migrations`.
+To create a migration manually, run `ts-node node_modules/.bin/typeorm migration:create -n MigrationName -d migration/folder`.
+
+To run migrations, execute `npm run migrations`.
+
 
 #### Starting your app
 Now, to start your app run ```npm start``` in the rootpath of the project. Then access your app at **localhost:port**. The port is logged in the console where you ran the start script.
@@ -62,7 +67,7 @@ Here is an example snippet:
 ```
 const logger = require('/app/logger');
 ...
-if (error) { 
+if (error) {
     logger.error('There is an error);
 } else {
     logger.info('There is no error);

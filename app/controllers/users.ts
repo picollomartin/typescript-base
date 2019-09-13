@@ -1,24 +1,28 @@
 import { NextFunction, Request, Response } from 'express';
-import models from '../models';
+import { getCustomRepository } from 'typeorm';
+import { UserRepository } from '../repositories/User';
 import { statusCodes } from './commons';
+import { User } from '../entities/User';
 import { notFound } from '../errors';
-import { IUserModel } from '../../types/models';
 
-const User = models.users;
+const userRepository: () => UserRepository = () => getCustomRepository(UserRepository);
 
 export const getUsers = (_: Request, res: Response, next: NextFunction): Promise<Response | void> =>
-  User.findAll()
-    .then((users: IUserModel[]) => res.send(users))
+  userRepository()
+    .find()
+    .then(users => res.send(users))
     .catch(next);
 
-export const createUser = (req: Request, res: Response, next: NextFunction): Promise<void> =>
-  User.create({ username: req.body.username })
+export const createUser = (req: Request, res: Response, next: NextFunction): Promise<Response | void> =>
+  userRepository()
+    .createAndSave({ username: req.body.username, somethingElse: '' })
     .then(() => res.status(statusCodes.created).end())
     .catch(next);
 
 export const getUserById = (req: Request, res: Response, next: NextFunction): Promise<Response | void> =>
-  User.findOne({ where: { id: req.params.id } })
-    .then((user: IUserModel) => {
+  userRepository()
+    .findOne({ where: { id: req.params.id } })
+    .then((user: User) => {
       if (!user) {
         throw notFound('User not found');
       }

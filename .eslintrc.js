@@ -35,8 +35,6 @@ module.exports = {
     "@typescript-eslint/explicit-member-accessibility": ["error"],
     "func-call-spacing": "off",
     "@typescript-eslint/func-call-spacing": ["error"],
-    "@typescript-eslint/interface-name-prefix": ["error", { "prefixWithI": "always" }],
-    "indent": "off",
     "no-empty-function": "off",
     "@typescript-eslint/no-empty-function": "error",
     "@typescript-eslint/no-empty-interface": ["error", { "allowSingleExtends": false }],

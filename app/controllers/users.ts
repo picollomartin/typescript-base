@@ -15,7 +15,7 @@ export const getUsers = (_: Request, res: Response, next: NextFunction): Promise
 
 export const createUser = (req: Request, res: Response, next: NextFunction): Promise<Response | void> =>
   userRepository()
-    .createAndSave({ username: req.body.username, somethingElese: '' })
+    .createAndSave({ username: req.body.username, somethingElse: '' })
     .then(() => res.status(statusCodes.created).end())
     .catch(next);
 

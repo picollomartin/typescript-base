@@ -11,10 +11,10 @@ export class User{
   username: string;
 
   @Column({name: 'something_else', type: 'varchar'})
-  somethingElese: string;
+  somethingElse: string;
 
   constructor(userdata: UserDTO) {
     this.username = userdata && userdata.username;
-    this.somethingElese = userdata && userdata.somethingElese
+    this.somethingElse = userdata && userdata.somethingElse
   }
 }

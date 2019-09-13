@@ -9,10 +9,6 @@ export class UserRepository extends Repository<User> {
     return this.findOne({ username });
   }
 
-  public findAll(): Promise<User[]> {
-    return this.find();
-  }
-
   public createAndSave(userdata: UserDTO): Promise<User> {
     const user = new User(userdata);
     return this.save(user);

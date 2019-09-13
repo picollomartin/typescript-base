@@ -14,7 +14,7 @@ export class User{
   somethingElese: string;
 
   constructor(userdata: UserDTO) {
-    this.username = userdata.username;
-    this.somethingElese = userdata.somethingElese
+    this.username = userdata && userdata.username;
+    this.somethingElese = userdata && userdata.somethingElese
   }
 }

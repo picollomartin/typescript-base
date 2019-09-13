@@ -9,13 +9,13 @@ const userRepository: () => UserRepository = () => getCustomRepository(UserRepos
 
 export const getUsers = (_: Request, res: Response, next: NextFunction): Promise<Response | void> =>
   userRepository()
-    .findAll()
+    .find()
     .then(users => res.send(users))
     .catch(next);
 
 export const createUser = (req: Request, res: Response, next: NextFunction): Promise<Response | void> =>
   userRepository()
-    .createAndSave({ username: req.body.username })
+    .createAndSave({ username: req.body.username, somethingElese: '' })
     .then(() => res.status(statusCodes.created).end())
     .catch(next);
 

@@ -4,13 +4,13 @@ const config = require('./config/db');
 const typeOrmConfig = {
   name: 'default',
   type: 'postgres',
-  synchronize: true,
   logging: false,
-  entities: ['./entity/**/*.ts'],
-  migrations: ['./migration/migrations/*.ts'],
+  entities: ['./app/entities/**/*.ts'],
+  migrations: ['./migration/*.ts'],
   subscribers: ['./subscriber/**/*.ts'],
   cli: {
     entitiesDir: './entity',
+    migrationsDir: './migration',
     subscribersDir: './subscriber'
   }
 };

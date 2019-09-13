@@ -1,6 +1,5 @@
 import app from './app';
 import Rollbar from 'rollbar';
-import * as migrationsManager from './migration';
 import config from './config';
 import logger from './app/logger';
 import { createConnection } from 'typeorm';
@@ -9,7 +8,6 @@ const defaultPort = 8080;
 const port = config.common.api.port || defaultPort;
 
 Promise.resolve()
-  .then(() => migrationsManager.check())
   .then(() => {
     const rollbar = new Rollbar({
       accessToken: config.common.rollbar.accessToken,
@@ -19,6 +17,7 @@ Promise.resolve()
     app.use(rollbar.errorHandler());
   })
   .then(() => createConnection())
+  .then(connection => connection.runMigrations())
   .then(() => {
     app.listen(port);
 

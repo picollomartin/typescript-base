@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import { getCustomRepository } from 'typeorm';
-import { UserRepository } from '../../repositories/User';
+import { UserRepository } from '../repositories/User';
 import { statusCodes } from './commons';
-import { User } from '../../entities/User';
+import { User } from '../entities/User';
 import { notFound } from '../errors';
 
 const userRepository: () => UserRepository = () => getCustomRepository(UserRepository);

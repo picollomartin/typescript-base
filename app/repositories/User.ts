@@ -1,18 +1,19 @@
 import { EntityRepository, Repository } from 'typeorm';
-import { User, Userdata } from '../entities/User';
+import { User } from '../entities/User';
+import { UserDTO } from '../../types/dto';
 
 // eslint-disable-next-line new-cap
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
-  public findByName(firstName: string, lastName: string): Promise<User | undefined> {
-    return this.findOne({ firstName, lastName });
+  public findByName(username: string): Promise<User | undefined> {
+    return this.findOne({ username });
   }
 
   public findAll(): Promise<User[]> {
     return this.find();
   }
 
-  public createAndSave(userdata: Userdata): Promise<User> {
+  public createAndSave(userdata: UserDTO): Promise<User> {
     const user = new User(userdata);
     return this.save(user);
   }

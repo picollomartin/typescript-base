@@ -1,24 +1,30 @@
 {
-    "compilerOptions": {
-        "allowJs": true,
-        "checkJs": false,
-        "esModuleInterop": true,
-        "downlevelIteration": true,
-        "lib": [
-            "esnext",
-            "dom"
-        ],
-        "module": "commonjs",
-        "noUnusedLocals": true,
-        "outDir": "dist",
-        "skipLibCheck": true,
-        "strict": true,
-        "strictFunctionTypes": false,
-        "strictPropertyInitialization": false,
-        "suppressImplicitAnyIndexErrors": true,
-        "target": "esnext"
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": ".",
+    "checkJs": false,
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "outDir": "dist",
+    "paths": {
+        "@config/*": ["config/*"],
+        "@app/*": ["app/*"]
     },
-    "include": [
-        "./"
-    ]
+    "skipLibCheck": true,
+    "strict": true,
+    "strictFunctionTypes": false,
+    "strictPropertyInitialization": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "target": "esnext"
+  },
+  "include": [
+    "./"
+  ]
 }
